@@ -1,0 +1,374 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manisha Enterprises</title>
+    <meta name="description" content="Manisha Enterprises is well organized and has a team of workers, who are able to set priorities, effectively work with other tradesmen, meet projected goals, and provide a high level of customer satisfaction with all Painting, Decorating services, and Waterproofing Services.">
+    <meta name="keywords" content="Manisha Enterprises, Manisha Enterprises Painting, Painting Services">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli&amp;display=swap" rel="stylesheet">
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
+    <link rel="stylesheet" href="{% static 'css/font-awosome.css' %}">
+    <link rel="stylesheet" href="{% static 'font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="p-wrapper">
+            <div class="spinner">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="header-area" style="position: fixed; z-index: 999999; top: 0; background-image: none; box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.75); animation-timing-function: ease-in-out; background-color: #fec73c;">
+        <div class="container">
+            <div class="paint-nav nav-fixed">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/"><img src="{% static 'images/logo.png' %}" alt="Manisha Enterprice"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav hp-1-nav ml-auto mt-2">
+
+                            <!--Home Button-->
+                            <li class="nav-item  dropdown">
+                                <a class="nav-link" href="/">Home</a>
+                            </li>
+
+                            <!--About Button-->
+                            <li class="nav-item  dropdown">
+                                <a class="nav-link" href="{% url 'about' %}">About</a>
+                            </li>
+
+                            <!--Service Button-->
+                            <li class="nav-item  dropdown">
+                                <a class="nav-link" href="{% url 'services' %}">Services</a>
+                            </li>
+                            
+                            <!--Portfolio Button-->
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'portfolio' %}">Portfolio</a>
+                            </li>
+
+                            <!--Gallery Button-->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'gallery' %}">Gallery</a>
+                            </li>
+
+                            <!--Contact Button-->
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                            </li>
+
+                            <!--Call Button-->
+                            <li class="nav-item">
+                                <a class="nav-link last" href="tel:{{website.phone_number}}">Call : {{website.phone_number}}</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Home Page Heading -->
+    <section class="hero-area">
+        <div class="simple-carousel">
+            <a href="#" class="control_next"><i class="fa fa-chevron-right"></i></a>
+            <a href="#" class="control_prev"><i class="fa fa-chevron-left"></i></a>
+            <ul>
+            {% for image in background %}
+            <li
+                class="slide"
+                style="
+                background-image: url('{{image.Image.url}}');
+                "
+            ></li>
+            {% endfor %}
+            </ul>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="wow zoomIn" data-wow-delay=".3s">{{website.homepage_heading}}</h1>
+                    <p class="wow zoomIn" data-wow-delay=".6s">{{website.homepage_description}}</p>
+                    <div class="btn-contact wow zoomIn" data-wow-delay=".9s">
+                        <span class="con-btn"><a href="{% url 'contact' %}">Contact Us</a></span>
+                    </div>
+                </div>
+            </div>
+        
+    </section>
+
+
+    <!-- Our Services -->
+    <section class="service">
+        <div class="container">
+            <div class="paints-service">
+                <div class="row">
+                    {% for service in first_six_services %}
+                    <div class="col-md-4">
+                        <div class="s-2-single-service">
+                            <div class="s-2-image wow fadeInUp" data-wow-delay=".5s">
+                                <img src="{{service.image.url}}" alt="{{service.name}}">
+                            </div>
+                            <div class="ss-2-content wow fadeInDown" data-wow-delay=".5s">
+                                <h3>{{service.name}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="btn-contact wow zoomIn" data-wow-delay=".5s">
+                <span class="con-btn" style="text-align:center;"><a href="{% url 'services' %}">Other Services</a></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- About Us -->
+    <section class="about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-6">
+                    <div class="about wow fadeInRight" data-wow-delay=".3s">
+                        <div class="ab-ficon">
+                            <span class="flaticon-paint-3 ficon-ab-1"></span>
+                        </div>
+                        {{website.homepage_about_us|safe}}
+                        <div class="btn-learn">
+                            <span class="learn-ab"><a href="{% url 'about' %}">Learn More</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Working Projects -->
+    <section class="completed-project">
+        <div class="container">
+            <div class="recent-top">
+                <p>Our On Going Projects</p>
+                <h3>{{website.On_Going_Project_Heading}}</h3>
+                <p>{{website.On_Going_Project_Description}}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="p-catagory">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row my-shuffle-container">
+                {% for project in working_projects %}
+                <div class="col-md-4 single-portfolio">
+                    <div class="project-1">
+                        <img src="{{project.project_image.url}}" alt="{{project.project_name}}">
+                        <div class="prj-1-content prj-three">
+                            <div class="p-icon">
+                                <span class="flaticon-repair ficon-pj-1 ficon-pj-3"></span>
+                            </div>
+                            <a href="{% url 'GoingProject' project.slug %}"><h4>{{project.project_name}}</h4></a>
+                            <a href="{% url 'GoingProject' project.slug %}"> Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-sm-1 col-xs-1 my-sizer-element2"></div>
+            </div>
+        </div>
+       
+        <br><br>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="client-feedback">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="client-image wow fadeInLeft" data-wow-delay=".5s">
+                        <img src="{% static 'images/client.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="client-content">
+                        <p>Testimonials</p>
+                        <h3 data-aos="zoom-in">Clients Feedbacks</h3>
+                        <div class="testimo-slide">
+                            <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+
+                                <div class="carousel-inner">
+                                    {% for review in reviews %}
+                                    <div class="item {% if forloop.counter0 %} active {% endif %} carousel-item">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p>“{{review.testimony}}”</p>
+                                                <p><small>~ {{review.name}}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+
+                                <ol class="carousel-indicators testimo-indicat">
+                                    {% for review in reviews %}
+                                    <li data-target="#quote-carousel" data-slide-to="0" class="{% if forloop.counter0 %} active {% endif %}">
+                                        <img class="img-fluid " src="{{review.photo.url}}" alt="">
+                                    </li>
+                                    {% endfor %}
+                                </ol>
+                                <div class="testimonial-nav">
+                                    <a data-slide="prev" href="#quote-carousel"
+                                        class="left carousel-control btn-prev"><i class="fa fa-chevron-left"></i></a>
+                                    <a data-slide="next" href="#quote-carousel"
+                                        class="right carousel-control btn-next"><i class="fa fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Gallery -->
+    <section class="completed-project">
+        <div class="container">
+            <div class="recent-top">
+                <p>Our Gallery</p>
+                <h3>{{website.gallery_heading}}</h3>
+                <p>{{website.gallery_description}}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-portfolio">
+        <div class="container">
+            <div class="row my-shuffle-container">
+                {% for photo in photos %}
+                <div class="col-md-4 single-portfolio">
+                    <div class="aspect__inner">
+                        <a data-fancybox="gallery" href="{{ photo.photo.url }}">
+                            <span class="flaticon-focus"></span></a>
+                        <img src="{{ photo.photo.url }}" alt="{{photo.name}}" />
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-md-1 my-sizer-elementac"></div>
+            </div>
+            <div class="btn-contact wow zoomIn" data-wow-delay=".5s">
+                <span class="con-btn" style="text-align:center;"><a href="{% url 'gallery' %}">Our Gallery</a></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Bottom Contact Us -->
+    <section class="project-ask">
+        <div class="container">
+            <div class="pro-ask-content">
+                <h1 data-aos="slide-in-left">Do You Have Any Project?</h1>
+                <p>{{website.bottom_contact_detail}}</p>
+                <div class="btn-contact wow zoomIn" data-wow-delay=".5s">
+                    <span class="con-btn"><a href="{% url 'contact' %}">Contact Us</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Content -->
+    <section class="footer-nav">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="about-company">
+                            <h4>About Company</h4>
+                            {{website.about_company_footer|safe}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="about-company">
+                            <h4>Services</h4>
+                            <ul class="single-footer-widget">
+                                {% for service in first_five_services %}
+                                <li><a href="#">{{service.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="about-company">
+                            <h4>Sitemap</h4>
+                            <ul class="single-footer-widget">
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'services' %}">Services</a></li>
+                                <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+                                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>
+        Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved | Made With <svg viewBox="0 0 1792 1792" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="height: 0.8rem;"><path d="M896 1664q-26 0-44-18l-624-602q-10-8-27.5-26T145 952.5 77 855 23.5 734 0 596q0-220 127-344t351-124q62 0 126.5 21.5t120 58T820 276t76 68q36-36 76-68t95.5-68.5 120-58T1314 128q224 0 351 124t127 344q0 221-229 450l-623 600q-18 18-44 18z" fill="#e25555"></path></svg> by <a href="https://devdesignz.com" style="color:rgb(191, 106, 224);" >DevDesignZ</a>
+        </p>
+    </footer>
+
+
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/countdown.js' %}"></script>
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/shuffle.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+<!-- index-206:27-->
+
+</html>
